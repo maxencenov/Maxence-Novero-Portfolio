@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxence Novero | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=McLaren&family=Sulphur+Point:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" style="text-decoration: none;">
+                <div class="profile-container">
+                    <img src="/Logo/Photo Novero Maxence.png" alt="Maxence Novero" class="nav-photo">
+                    <div class="overlay-logo">
+                        <img src="/Logo/Logo MN.png" alt="Logo MN" class="nav-logo">
+                    </div>
+                </div>
+            </a>
+
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-button">
+                <span class="burger-icon"></span>
+            </label>
+
+            <nav class="centered-nav">
+                <a href="index.html">Accueil</a>
+                <a href="projets-cours.html">Projets Cours</a>
+                <a href="projets-pro.html" class="active">Projets Pro</a>
+                <a href="#contact" class="contact-link">Contact</a>
+                <a href="CV Novero Maxence.pdf" class="cv-button" target="_blank">
+                    <img src="Logo/download-icon.svg" alt="Icone Download" class="cv-icon">
+
+                    <span>Télécharger mon CV</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-detail">
+        <div class="container">
+            <header class="project-header">
+                <h1 class="mclaren-text">Tutoriel Guardian</h1>
+                <div class="project-tags">
+                    <span class="tag tag-motion">Motion Design</span>
+                    <span class="project-date">2025-2026</span>
+                </div>
+            </header>
+
+            <section class="project-body">
+                <div class="project-text">
+                    <div class="text-block">
+                        <h2 class="mclaren-text">Accompagnement & Pédagogie</h2>
+                        <p>
+                            Pour garantir une prise en main fluide du radar anti-collision, j'ai réalisé un
+                            <strong>tutoriel vidéo complet</strong>. L'objectif était de transformer une documentation
+                            technique parfois complexe en un parcours visuel simple et intuitif pour l'utilisateur
+                            final.
+                        </p>
+                        <p>
+                            Ce guide pas-à-pas accompagne le rameur dès les premières étapes : de l'allumage physique du
+                            boîtier <strong>Guardian</strong> à la connexion Wi-Fi sur l'interface dédiée, jusqu'au
+                            paramétrage précis des angles de détection.
+                        </p>
+                        <h2 class="mclaren-text">Sécurité augmentée sur l'eau</h2>
+                        <p>
+                            En montrant l'intégralité du processus, ce support permet d'assurer que chaque utilisateur
+                            part sur l'eau avec un système <strong>parfaitement configuré</strong>. C'est un maillon
+                            essentiel de l'expérience utilisateur que j'ai développée : l'interface ne doit pas
+                            seulement être performante, elle doit être accessible sans effort.
+                        </p>
+                    </div>
+
+                    <div class="project-media">
+                        <div class="video-wrapper landscape-format"
+                            style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                            <video autoplay loop playsinline controls style="width: 100%; display: block; aspect-ratio: 16 / 9; object-fit: cover;">
+                                <source src="Créa/Tutoriel Guardian.mp4" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture de vidéos.
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <nav class="project-navigation">
+                <a href="projet-hub.html" class="nav-item prev">
+                    <img src="Mockups/HuandSci - Mockup.jpg" alt="Projet précédent" class="nav-thumb">
+                    <div class="nav-label">
+                        <span>&larr; Précédent</span>
+                        <strong class="mclaren-text">Hub du site huandsci.com</strong>
+                    </div>
+                </a>
+
+                <a href="projets-pro.html" class="nav-item next">
+                    <div class="nav-label">
+                        <span>Retour aux &rarr;</span>
+                        <strong class="mclaren-text">Projets Pro</strong>
+                    </div>
+                    <img src="Mockups/PowerMax - Mockup.jpg" alt="Projet suivant" class="nav-thumb">
+                </a>
+            </nav>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-center">
+                <a href="mailto:maxence.novero@gmail.com" style="text-decoration: none; color: inherit;">
+                    maxence.novero@gmail.com
+                </a>
+                <p class="footer-phone">06 10 73 16 29</p>
+                <p class="footer-location">Lyon</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/maxence-novero/" target="_blank">
+                    <img src="Logo/linkedin-logo.png" alt="LinkedIn" class="footer-linkedin">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

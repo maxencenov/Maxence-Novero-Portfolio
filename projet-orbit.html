@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxence Novero | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=McLaren&family=Sulphur+Point:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" style="text-decoration: none;">
+                <div class="profile-container">
+                    <img src="/Logo/Photo Novero Maxence.png" alt="Maxence Novero" class="nav-photo">
+                    <div class="overlay-logo">
+                        <img src="/Logo/Logo MN.png" alt="Logo MN" class="nav-logo">
+                    </div>
+                </div>
+            </a>
+
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-button">
+                <span class="burger-icon"></span>
+            </label>
+
+            <nav class="centered-nav">
+                <a href="index.html">Accueil</a>
+                <a href="projets-cours.html" class="active">Projets Cours</a>
+                <a href="projets-pro.html">Projets Pro</a>
+                <a href="#contact" class="contact-link">Contact</a>
+                <a href="CV Novero Maxence.pdf" class="cv-button" target="_blank">
+                    <img src="Logo/download-icon.svg" alt="Icone Download" class="cv-icon">
+
+                    <span>Télécharger mon CV</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="project-detail">
+        <div class="container">
+            <header class="project-header">
+                <h1 class="mclaren-text">Orbit</h1>
+                <div class="project-tags">
+                    <span class="tag tag-motion">Motion Design</span>
+                    <span class="project-date">2024-2025</span>
+                </div>
+            </header>
+
+            <section class="project-body">
+                <div class="project-text">
+                    <div class="text-block">
+                    <h2 class="mclaren-text">Le Projet</h2>
+                    <p>
+                        Dans le cadre d’un cours de <strong>Motion Design</strong>, l’objectif était de donner vie à une
+                        scène spatiale
+                        à partir d’assets graphiques imposés. Le défi consistait à créer une animation dynamique et
+                        réaliste,
+                        en travaillant sur la fluidité des mouvements et la gestion de la profondeur.
+                    </p>
+                    <p>
+                        Ce projet m'a permis d'approfondir les techniques d'animation de tracés, de masques complexes et
+                        de synchronisation des éléments visuels pour obtenir une composition cohérente.
+                    </p>
+
+                    <h2 class="mclaren-text">Techniques d'animation</h2>
+                    <p>
+                        Le réalisme de la scène repose sur plusieurs techniques avancées : un mouvement vertical fluide
+                        simulant la
+                        <strong>flottaison de la planète</strong>, une rotation continue des anneaux et l'utilisation de
+                        <strong>masques de profondeur</strong> permettant aux balles de passer derrière les astres,
+                        accentuant l'effet de perspective.
+                    </p>
+                    <p>
+                        Le texte a été animé via un masque d’apparition progressive, tandis que les balles suivent des
+                        tracés dynamiques
+                        avec des vitesses variées pour dynamiser l'ensemble de la boucle.
+                    </p>
+                </div>
+
+                <div class="project-media">
+                    <video autoplay loop playsinline controls class="media-landscape">
+                        <source src="Créa/Orbit.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                </div>
+            </section>
+
+            <nav class="project-navigation">
+                <a href="projet-datavisu.html" class="nav-item prev">
+                    <img src="Mockups/CDM - Mockup.jpg" alt="Projet précédent" class="nav-thumb">
+                    <div class="nav-label">
+                        <span>&larr; Précédent</span>
+                        <strong class="mclaren-text">L'histoire de la Coupe du Monde du Football</strong>
+                    </div>
+                </a>
+
+                <a href="projet-railboost.html" class="nav-item next">
+                    <div class="nav-label">
+                        <span>Suivant &rarr;</span>
+                        <strong class="mclaren-text">RailBoost</strong>
+                    </div>
+                    <img src="Mockups/RailBoost - Mockup.jpg" alt="Projet suivant" class="nav-thumb">
+                </a>
+            </nav>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-center">
+                <a href="mailto:maxence.novero@gmail.com" style="text-decoration: none; color: inherit;">
+                    maxence.novero@gmail.com
+                </a>
+                <p class="footer-phone">06 10 73 16 29</p>
+                <p class="footer-location">Lyon</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/maxence-novero/" target="_blank">
+                    <img src="Logo/linkedin-logo.png" alt="LinkedIn" class="footer-linkedin">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

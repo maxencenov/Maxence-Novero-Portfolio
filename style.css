@@ -1,0 +1,1137 @@
+/* ==========================================================================
+   1. CONFIGURATION GÉNÉRALE
+   ========================================================================== */
+:root {
+    --accent-color: #A64D4D;
+    /* Le bordeaux du CV */
+    --text-color: #2D2D2D;
+    /* Gris très foncé pour la lecture */
+    --bg-light: #FDFDFD;
+    /* Blanc cassé pour le fond */
+    --transition: 0.3s ease;
+    /* Vitesse d'animation d'origine */
+}
+
+body {
+    margin: 0;
+    font-family: 'Sulphur Point', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+}
+
+.mclaren-text {
+    font-family: 'McLaren', cursive;
+}
+
+.centered {
+    text-align: center;
+}
+
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION (OPTIMISÉ & BURGER COMPLET)
+   ========================================================================== */
+
+.main-header {
+    background: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 75px;
+}
+
+/* Profil & Logo */
+.profile-container {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.overlay-logo {
+    position: absolute;
+    inset: 0;
+    background: rgba(166, 77, 77, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.nav-logo {
+    width: 70%;
+    filter: invert(1);
+}
+
+.profile-container:hover .nav-photo {
+    filter: grayscale(100%) blur(2px);
+    transform: scale(1.1);
+}
+
+.profile-container:hover .overlay-logo {
+    opacity: 1;
+}
+
+/* Menu Desktop */
+.centered-nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.centered-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: 'McLaren', cursive;
+    transition: var(--transition);
+}
+
+.centered-nav a:hover,
+.centered-nav a.active {
+    color: var(--accent-color);
+}
+
+/* Éléments du Burger masqués sur ordinateur */
+.burger-checkbox {
+    display: none;
+}
+
+.burger-button {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE (900px)
+   ========================================================================== */
+
+/* ==========================================================================
+   RESPONSIVE MOBILE (900px)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .nav-container {
+        padding: 0 20px;
+        position: relative;
+    }
+
+    /* 1. Bouton burger */
+    .burger-button {
+        display: block !important;
+        width: 30px;
+        height: 25px;
+        position: relative;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    /* 2. Icône du burger */
+    .burger-icon,
+    .burger-icon::before,
+    .burger-icon::after {
+        display: block;
+        background-color: var(--text-color);
+        height: 3px;
+        width: 100%;
+        border-radius: 3px;
+        position: absolute;
+        transition: var(--transition);
+    }
+
+    .burger-icon {
+        top: 11px;
+    }
+
+    .burger-icon::before {
+        content: "";
+        top: -9px;
+    }
+
+    .burger-icon::after {
+        content: "";
+        top: 9px;
+    }
+
+    .burger-checkbox:checked+.burger-button .burger-icon {
+        background: transparent;
+    }
+
+    .burger-checkbox:checked+.burger-button .burger-icon::before {
+        transform: rotate(45deg);
+        top: 0;
+    }
+
+    .burger-checkbox:checked+.burger-button .burger-icon::after {
+        transform: rotate(-45deg);
+        top: 0;
+    }
+
+    /* 3. Menu mobile déroulant */
+    .centered-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px 0 35px 0;
+        /* Un peu plus d'espace en bas */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+        gap: 10px;
+        /* Espace entre les liens réduit */
+        z-index: 999;
+    }
+
+    .burger-checkbox:checked~.centered-nav {
+        display: flex;
+    }
+
+    /* Liens textuels uniquement */
+    .centered-nav a:not(.cv-button) {
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        font-size: 1.1rem;
+    }
+
+    /* 4. Correction du bouton CV (Aéré et centré) */
+    .cv-button {
+        width: auto;
+        /* Annule le 100% pour ne pas coller aux bords */
+        min-width: 160px;
+        /* Lui donne une taille minimale élégante */
+        max-width: 80%;
+        /* Empêche de toucher les bords sur très petits écrans */
+        margin: 15px auto 5px auto;
+        /* Centre horizontalement avec de l'espace autour */
+        padding: 12px 25px;
+        display: inline-flex;
+        /* Repasse en inline-flex pour respecter le fit-content */
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+/* ==========================================================================
+   3. CARROUSEL (IMAGE MAX FOOT)
+   ========================================================================== */
+.carousel-placeholder {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+
+.carousel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+}
+
+.carousel-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 25px 40px;
+    border-radius: 15px;
+}
+
+/* --- Responsive Carrousel --- */
+@media (max-width: 768px) {
+    .carousel-placeholder {
+        height: 240px;
+        margin-bottom: 50px;
+    }
+
+    .carousel-content {
+        padding: 15px 20px;
+        width: 85%;
+    }
+
+    .carousel-content h2 {
+        font-size: 1.25rem;
+        margin: 5px 0;
+    }
+
+    .carousel-content p {
+        font-size: 0.85rem;
+        margin: 5px 0;
+    }
+}
+
+
+/* ==========================================================================
+   4. ABOUT & SKILLS ORBIT
+   ========================================================================== */
+.about-me {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto 80px auto;
+}
+
+.photo-frame {
+    width: 100%;
+    height: 350px;
+    background: radial-gradient(circle, #ffffff 0%, #f7f7f7 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-orbit {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-center {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    background: white;
+    border-radius: 50%;
+    z-index: 10;
+    border: 2.5px solid var(--accent-color);
+    padding: 15px;
+    box-shadow: 0 0 25px rgba(166, 77, 77, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-center img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-satellite {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+    animation: orbit-main 20s linear infinite;
+}
+
+.logo-satellite img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    will-change: transform;
+    animation: orbit-counter 20s linear infinite;
+}
+
+.s1 {
+    --rotation-start: 0deg;
+}
+
+.s2 {
+    --rotation-start: 72deg;
+}
+
+.s3 {
+    --rotation-start: 144deg;
+}
+
+.s4 {
+    --rotation-start: 216deg;
+}
+
+.s5 {
+    --rotation-start: 288deg;
+}
+
+@keyframes orbit-main {
+    from {
+        transform: rotate(var(--rotation-start)) translateX(115px);
+    }
+
+    to {
+        transform: rotate(calc(var(--rotation-start) + 360deg)) translateX(115px);
+    }
+}
+
+@keyframes orbit-counter {
+    from {
+        transform: rotate(calc(var(--rotation-start) * -1));
+    }
+
+    to {
+        transform: rotate(calc((var(--rotation-start) + 360deg) * -1));
+    }
+}
+
+.skill-orbit:hover .logo-satellite,
+.skill-orbit:hover .logo-satellite img {
+    animation-play-state: paused;
+}
+
+/* --- Responsive About & Orbit --- */
+@media (max-width: 768px) {
+    .about-me {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .photo-frame {
+        height: 280px;
+    }
+
+    @keyframes orbit-main {
+        from {
+            transform: rotate(var(--rotation-start)) translateX(80px);
+        }
+
+        to {
+            transform: rotate(calc(var(--rotation-start) + 360deg)) translateX(80px);
+        }
+    }
+
+    .logo-center {
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+    }
+
+    .logo-satellite {
+        width: 42px;
+        height: 42px;
+        padding: 6px;
+    }
+}
+
+
+/* ==========================================================================
+   BARRE DE SÉPARATION
+   ========================================================================== */
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    /* Couleur très légère */
+    max-width: 1000px;
+    /* Aligné sur la largeur de ton contenu */
+    margin: 0 auto;
+    /* Centré */
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 768px) {
+    .section-divider {
+        max-width: 80%;
+        /* Un peu plus courte sur mobile */
+    }
+}
+
+
+
+/* ==========================================================================
+   5. GRILLE DES CATÉGORIES DE PROJETS
+   ========================================================================== */
+.project-categories {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.category-card {
+    text-decoration: none;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 350px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.category-card:hover {
+    transform: scale(1.02);
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.1);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.2) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    color: white;
+}
+
+/* --- Responsive Catégories --- */
+@media (max-width: 768px) {
+    .project-categories {
+        padding: 40px 20px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    .category-card {
+        height: 260px;
+    }
+
+    .category-overlay {
+        padding: 20px;
+    }
+}
+
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--accent-color);
+    padding: 30px 40px;
+    color: white;
+    font-family: 'Sulphur Point', sans-serif;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.footer-center {
+    text-align: center;
+}
+
+.footer-center p {
+    margin: 4px 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.footer-right {
+    position: absolute;
+    right: 0;
+}
+
+.footer-linkedin {
+    width: 45px;
+    height: 45px;
+    transition: transform 0.3s ease;
+}
+
+.footer-linkedin:hover {
+    transform: scale(1.1);
+}
+
+/* --- Responsive Footer --- */
+@media (max-width: 768px) {
+    .footer-inner {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .footer-right {
+        position: static;
+        margin-top: 5px;
+    }
+}
+
+/* ==========================================================================
+   PAGE PROJETS COURS - NOUVEAUX STYLES (CORRECTION TAGS & HAUTEUR)
+   ========================================================================== */
+
+.year-section {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Lien englobant : on utilise flex pour que la carte s'étire en hauteur */
+.project-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    height: 100%;
+}
+
+/* La Carte */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenu de la carte */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Désactivation de l'alignement flex sur les enfants pour que les tags 
+       ne s'étirent pas sur toute la largeur */
+    align-items: flex-start;
+}
+
+.card-content h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1.2rem;
+    width: 100%;
+    /* Le titre peut prendre toute la largeur */
+}
+
+.card-content p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 0;
+    width: 100%;
+    /* Le texte peut prendre toute la largeur */
+}
+
+.external-link-style {
+    color: var(--accent-color);
+    text-decoration: underline;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   SYSTÈME DE TAGS (LARGEUR NATURELLE)
+   ========================================================================== */
+
+/* ==========================================================================
+   SYSTÈME DE TAGS (CORRECTION EMPILEMENT)
+   ========================================================================== */
+
+/* 1. On définit le tag comme un élément qui ne prend que la place de son texte */
+.tag {
+    display: inline-block !important;
+    /* Force le côte à côte */
+    white-space: nowrap;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-family: 'McLaren', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 8px;
+    /* Espace à droite du tag pour le suivant */
+    margin-bottom: 8px;
+    /* Espace sous le tag pour le titre */
+    width: auto !important;
+    /* Empêche de prendre 100% de la largeur */
+}
+
+/* 2. On s'assure que le contenu de la carte laisse les tags s'aligner */
+.card-content {
+    display: block !important;
+    /* Casse le flex-column qui empile tout */
+    text-align: left !important;
+}
+
+/* Couleurs des tags (inchangées) */
+.tag-motion {
+    background: #F3E5F5;
+    color: #8E24AA;
+    border: 1px solid rgba(142, 36, 170, 0.2);
+}
+
+.tag-manual {
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+.tag-ux {
+    background: rgba(166, 77, 77, 0.1);
+    color: var(--accent-color);
+    border: 1px solid rgba(166, 77, 77, 0.2);
+}
+
+.tag-dev {
+    background: #E8EAF6;
+    color: #3F51B5;
+    border: 1px solid rgba(63, 81, 181, 0.2);
+}
+
+.tag-dev {
+    background: #E8EAF6;
+    color: #3F51B5;
+}
+
+.tag-data {
+    background: #efebe9;
+    color: #5d4037;
+    border: 1px solid #d7ccc8;
+}
+
+.tag-ps {
+    background: #E1F5FE;
+    color: #03A9F4;
+    border: 1px solid rgba(3, 169, 244, 0.2);
+}
+
+.tag-ai {
+    background: #FFF8E1;
+    color: #FF8F00;
+    border: 1px solid rgba(255, 143, 0, 0.2);
+}
+
+
+/* 3. Ajustement mobile pour iPhone */
+@media (max-width: 900px) {
+    .tag {
+        font-size: 0.65rem;
+        padding: 3px 10px;
+        margin-right: 5px;
+    }
+}
+
+/* ==========================================================================
+   PAGE DÉTAIL PROJET (SANS ROGNAGE / NO CROP)
+   ========================================================================== */
+
+.project-page {
+    padding: 60px 0;
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* Header */
+.project-header {
+    margin-bottom: 50px;
+}
+
+.project-header h1 {
+    font-size: 2.8rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.project-tags {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ==========================================================================
+   STYLE DE LA DATE (SOUS LES TAGS)
+   ========================================================================== */
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permet aux éléments de passer à la ligne */
+    align-items: center;
+    gap: 8px;
+}
+
+.project-date {
+    display: block;
+    /* Force l'élément à se comporter comme un bloc */
+    width: 100%;
+    /* Prend toute la largeur pour passer en dessous */
+    font-family: 'Sulphur Point', sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+    /* Petit espace avec les tags du dessus */
+}
+
+@media (max-width: 900px) {
+    .project-date {
+        font-size: 0.8rem;
+    }
+}
+
+/* Body Layout - Configuration par défaut */
+.project-body {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 100px;
+}
+
+.project-text {
+    flex: 1.2;
+}
+
+.text-block {
+    margin-bottom: 40px;
+}
+
+.text-block h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.text-block p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Media - Conteneur */
+.project-media {
+    flex: 1;
+}
+
+/* Options de formats - Suppression du rognage */
+.media-square,
+.media-portrait,
+.media-landscape,
+.video-item {
+    width: 100%;
+    /* contain permet de voir toute l'image/vidéo sans couper */
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    display: block;
+    background-color: transparent;
+    /* Pas de fond noir si la vidéo est entière */
+}
+
+/* Carré : On le garde car c'est ton format d'origine After Effects */
+.media-square,
+.video-item {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    /* On garde cover uniquement ici si tes vidéos AE sont déjà carrées */
+}
+
+/* Paysage et Portrait : On laisse le fichier original décider de la hauteur pour ne pas couper */
+.media-landscape {
+    height: auto;
+}
+
+.media-portrait {
+    height: auto;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   VARIANTE : LAYOUT PAYSAGE (Pleine largeur)
+   ========================================================================== */
+
+.project-body.layout-landscape {
+    flex-direction: column;
+    gap: 40px;
+}
+
+@media (min-width: 901px) {
+    .project-body.layout-landscape .project-text {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        width: 100%;
+    }
+}
+
+.project-body.layout-landscape .project-media {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+
+    /* Annule l'inversion pour que l'image reste APRÈS le texte sur mobile */
+    .project-body {
+        flex-direction: column !important;
+    }
+
+    /* Optionnel : centre l'affiche sur mobile si nécessaire */
+    .media-portrait {
+        max-width: 100%;
+        /* Permet à l'image d'être plus large sur petit écran */
+    }
+}
+
+/* ==========================================================================
+   NAVIGATION & RESPONSIVE (ALIGNEMENT SUR UNE LIGNE)
+   ========================================================================== */
+
+.project-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding: 40px 0;
+    margin-top: 80px;
+    gap: 15px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: var(--transition);
+    flex: 1;
+    min-width: 0;
+    /* Important pour empêcher le débordement du texte */
+}
+
+.nav-item.prev {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.nav-item.next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.nav-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.nav-label span {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    text-transform: uppercase;
+}
+
+.nav-item:hover .mclaren-text {
+    color: var(--accent-color);
+}
+
+/* --- Responsive Navigation (Maintien sur une ligne) --- */
+@media (max-width: 900px) {
+
+    /* On garde flex-direction: row (par défaut) pour rester sur une ligne */
+    .project-navigation {
+        padding: 25px 0;
+        gap: 10px;
+    }
+
+    .nav-thumb {
+        width: 45px;
+        /* Vignettes plus petites sur mobile */
+        height: 45px;
+    }
+
+    .nav-label span {
+        font-size: 0.65rem;
+        /* Texte "Précédent/Suivant" plus petit */
+    }
+
+    .nav-label strong {
+        font-size: 0.85rem;
+        /* Nom du projet plus petit */
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        /* Coupe le texte s'il est trop long pour tenir */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .nav-item {
+        gap: 8px;
+        /* Réduction de l'espace entre l'image et le texte */
+    }
+}
+
+/* On conserve le comportement spécifique au corps de page */
+@media (max-width: 900px) {
+    .project-body:not(.layout-landscape) {
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+
+    @media (max-width: 900px) {
+
+        /* Force l'ordre normal uniquement pour la section des images de la lino */
+        .project-body:has(.media-left) {
+            flex-direction: column !important;
+        }
+    }
+
+    .project-header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ==========================================================================
+   BOUTON CV - STYLE HOVER NOIR
+   ========================================================================== */
+
+.cv-button {
+    background-color: var(--accent-color);
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all var(--transition);
+    border: 2px solid transparent;
+}
+
+/* État au survol : fond noir, texte reste blanc */
+.cv-button:hover {
+    background-color: #171717;
+    /* Fond noir */
+    color: white !important;
+    /* Texte blanc */
+    border-color: #171717;
+    /* Bordure assortie au fond */
+    transform: translateY(-2px);
+}
+
+.cv-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    /* L'icône est blanche par défaut pour être sur le bouton bordeaux */
+    filter: brightness(0) invert(1);
+    transition: all var(--transition);
+}
+
+/* État de l'icône au survol : on garde le filtre blanc */
+.cv-button:hover .cv-icon {
+    filter: brightness(0) invert(1);
+    /* Reste blanc sur le fond noir */
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxence Novero | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=McLaren&family=Sulphur+Point:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" style="text-decoration: none;">
+                <div class="profile-container">
+                    <img src="/Logo/Photo Novero Maxence.png" alt="Maxence Novero" class="nav-photo">
+                    <div class="overlay-logo">
+                        <img src="/Logo/Logo MN.png" alt="Logo MN" class="nav-logo">
+                    </div>
+                </div>
+            </a>
+
+            <input type="checkbox" id="burger-toggle" class="burger-checkbox">
+            <label for="burger-toggle" class="burger-button">
+                <span class="burger-icon"></span>
+            </label>
+
+            <nav class="centered-nav">
+                <a href="index.html">Accueil</a>
+                <a href="projets-cours.html">Projets Cours</a>
+                <a href="projets-pro.html" class="active">Projets Pro</a>
+                <a href="#contact" class="contact-link">Contact</a>
+                <a href="CV Novero Maxence.pdf" class="cv-button" target="_blank">
+                    <img src="Logo/download-icon.svg" alt="Icone Download" class="cv-icon">
+
+                    <span>Télécharger mon CV</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+<main class="project-detail">
+        <div class="container">
+            <header class="project-header">
+                <h1 class="mclaren-text">PowerMax</h1>
+                <div class="project-tags">
+                    <span class="tag tag-ux">UX/UI Design</span>
+                    <span class="tag tag-dev">Low-Code</span>
+                    <span class="project-date">2024-2025</span>
+                </div>
+            </header>
+
+            <section class="project-body">
+                <div class="project-text">
+                    <div class="text-block">
+                    <h2 class="mclaren-text">Le Projet</h2>
+                    <p>
+                        Réalisé lors de mon stage à la <strong>DSI de France Travail</strong>, ce projet consistait à développer une application 
+                        pédagogique sur <strong>PowerApps</strong>. L'objectif était de créer un guide interactif des bonnes pratiques UX 
+                        pour accompagner les collaborateurs non-développeurs dans la création de leurs propres outils.
+                    </p>
+                    <p>
+                        À travers un cas d'usage concret — la gestion et réservation de véhicules — nous avons conçu un démonstrateur 
+                        illustrant le potentiel de la <strong>Power Platform</strong> de Microsoft, tout en vulgarisant les principes 
+                        fondamentaux du design d'interface.
+                    </p>
+                    <h2 class="mclaren-text">Démonstrateur & Astuces</h2>
+                    <p>
+                        L’interface intègre <strong>26 "ampoules de tips"</strong> réparties stratégiquement. Chaque astuce propose 
+                        des explications textuelles ou des tableaux comparatifs "À faire / À éviter" pour guider l'utilisateur 
+                        dans ses choix ergonomiques.
+                    </p>
+                    <p>
+                        <a href="https://drive.google.com/drive/folders/1xfQn573r7U0M-GCK2BhbrzpoT3CY8P4X" target="_blank" class="project-link">
+                            Cliquez ici pour consulter l'intégralité des tips UX.
+                        </a>
+                    </p>
+                </div>
+
+                <div class="project-media">
+                    <video autoplay loop playsinline controls class="media-landscape">
+                        <source src="Créa/PowerMax.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                </div>
+            </section>
+
+            <nav class="project-navigation">
+                <a href="projets-pro.html" class="nav-item prev">
+                    <img src="Mockups/PowerMax - Mockup.jpg" alt="Projet précédent" class="nav-thumb">
+                    <div class="nav-label">
+                        <span>&larr; Retour aux</span>
+                        <strong class="mclaren-text">Projets Pro</strong>
+                    </div>
+                </a>
+
+                <a href="projet-mini-site.html" class="nav-item next">
+                    <div class="nav-label">
+                        <span>Suivant &rarr;</span>
+                        <strong class="mclaren-text">Développement mini-site sur IoT</strong>
+                    </div>
+                    <img src="Mockups/IoT - Mockup.jpg" alt="Retour liste" class="nav-thumb">
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <div class="footer-center">
+                <a href="mailto:maxence.novero@gmail.com" style="text-decoration: none; color: inherit;">
+                    maxence.novero@gmail.com
+                </a>
+                <p class="footer-phone">06 10 73 16 29</p>
+                <p class="footer-location">Lyon</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/maxence-novero/" target="_blank">
+                    <img src="Logo/linkedin-logo.png" alt="LinkedIn" class="footer-linkedin">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
